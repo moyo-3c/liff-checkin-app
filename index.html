@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>チェックイン画面</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>缶バッジチェックイン</h1>
+    <button onclick="loginAndRedirect()">LINEでチェックイン</button>
+  </div>
+  <script>
+    async function loginAndRedirect() {
+      await liff.init({ liffId: 'YOUR_LIFF_ID_HERE' }); // ← ここを書き換えてください
+      const profile = await liff.getProfile();
+      const userId = profile.userId;
+      const scriptUrl = 'YOUR_GAS_WEBAPP_URL'; // ← ここも書き換えてください
+      window.location.href = `${scriptUrl}?userId=${userId}`;
+    }
+  </script>
+</body>
+</html>
