@@ -15,10 +15,17 @@
 
   <script>
     async function loginAndRedirect() {
-      await liff.init({ liffId: '2007231234-L8Pv4JNn' }); // ← ご自身のLIFF ID
+      await liff.init({ liffId: '2007231234-L8Pv4JNn', withLoginOnExternalBrowser: true });
+
+      // ログインしていない場合はログインさせる
+      if (!liff.isLoggedIn()) {
+        liff.login();
+        return;
+      }
+
       const profile = await liff.getProfile();
       const userId = profile.userId;
-      const scriptUrl = 'https://script.google.com/macros/s/AKfycbx1234567890ABCDEF1234567890/exec'; // ← 正しいexec URL
+      const scriptUrl = 'https://script.google.com/macros/s/AKfycbx1234567890ABCDEF1234567890/exec';
       window.location.href = `${scriptUrl}?userId=${userId}`;
     }
   </script>
