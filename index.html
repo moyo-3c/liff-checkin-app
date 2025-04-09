@@ -14,11 +14,10 @@
   </div>
   <script>
     async function loginAndRedirect() {
-      await liff.init({ liffId: '2007231234-L8Pv4JNn' }); // ← ここを書き換えてください
+      await liff.init({ liffId: '2007231234-L8Pv4JNn' }); // ← ここは正しいLIFF IDでOK！
       const profile = await liff.getProfile();
       const userId = profile.userId;
-      const scriptUrl = 'const scriptUrl = 'https://script.google.com/macros/s/AKfycbx1234567890ABCDEF1234567890/exec';
-'; // ← ここも書き換えてください
+      const scriptUrl = 'https://script.google.com/macros/s/AKfycbx1234567890ABCDEF1234567890/exec'; // ← ✅これでOK！
       window.location.href = `${scriptUrl}?userId=${userId}`;
     }
   </script>
