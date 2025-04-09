@@ -12,12 +12,13 @@
     <h1>缶バッジチェックイン</h1>
     <button onclick="loginAndRedirect()">LINEでチェックイン</button>
   </div>
+
   <script>
     async function loginAndRedirect() {
-      await liff.init({ liffId: '2007231234-L8Pv4JNn' }); // ← ここは正しいLIFF IDでOK！
+      await liff.init({ liffId: '2007231234-L8Pv4JNn' }); // ← ご自身のLIFF ID
       const profile = await liff.getProfile();
       const userId = profile.userId;
-      const scriptUrl = 'https://script.google.com/macros/s/AKfycbx1234567890ABCDEF1234567890/exec'; // ← ✅これでOK！
+      const scriptUrl = 'https://script.google.com/macros/s/AKfycbx1234567890ABCDEF1234567890/exec'; // ← 正しいexec URL
       window.location.href = `${scriptUrl}?userId=${userId}`;
     }
   </script>
